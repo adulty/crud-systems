@@ -28,12 +28,12 @@ require_once('function/helper.php');
             <tr>
                 <td width="40px">Username</td>
                 <td>:
-                    <input type="text" name="nama" placeholder="Masukkan Nama">
+                    <input type="text" name="nama" placeholder="Masukkan Nama" required>
                 </td>
                 <tr>
                     <td width="40px">Password</td>
                     <td>:
-                    <input type="password" name="password" placeholder="Masukkan Password">
+                    <input type="password" name="password" placeholder="Masukkan Password" required>
                 </td>
                 </tr>
 

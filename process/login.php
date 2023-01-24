@@ -9,6 +9,10 @@ $password = md5($_POST['password']);
 
 $query = mysqli_query($connection, "SELECT * FROM login_form WHERE nama = '$username' AND password = '$password'");
 
+// Define variables and initialize with empty value
+$username = $password = "";
+$user_error = $pass_error = "";
+
 // Mengecek pengguna ke database
 if (mysqli_num_rows($query) != 0) {
     $row = mysqli_fetch_assoc($query);

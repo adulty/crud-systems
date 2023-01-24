@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <label>Satuan</label>
                             <input type="text" name="satuan" class="form-control <?php echo (!empty($satuan_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $satuan; ?>">
                             <span class="invalid-feedback"><?php echo $satuan_err;?></span>
-                        </div>
+                        </input>
                         <div class="form-group">
                             <label>Tahunan</label>
                             <input type="number" name="tahunan" class="form-control <?php echo (!empty($tahun_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $tahunan; ?>">
