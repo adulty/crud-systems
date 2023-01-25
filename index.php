@@ -1,6 +1,6 @@
 <?php 
 
-require_once('function/connection.php');
+require_once('function/config.php');
 require_once('function/helper.php');
 
 ?>

@@ -1,13 +1,13 @@
 <?php
 
 require_once('../function/helper.php');
-require_once('../function/connection.php');
+require_once('../function/config.php');
 
 // Menangkap request
 $username = $_POST['nama'];
 $password = md5($_POST['password']);
 
-$query = mysqli_query($connection, "SELECT * FROM login_form WHERE nama = '$username' AND password = '$password'");
+$query = mysqli_query($link, "SELECT * FROM login WHERE nama = '$username' AND password = '$password'");
 
 // Define variables and initialize with empty value
 $username = $password = "";
