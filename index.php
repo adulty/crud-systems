@@ -2,6 +2,7 @@
 
 require_once('function/config.php');
 require_once('function/helper.php');
+require_once('process/errors.php');
 
 ?>
 
@@ -40,7 +41,9 @@ require_once('function/helper.php');
             </tr>
         </table><br>
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" name="login_user">
+        <p>Belum punya akun? <a href="process/register.php">Klik disini!</a></p>
     </form>
+
 </body>
 </html>
