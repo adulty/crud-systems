@@ -13,34 +13,16 @@ require_once('function/helper.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <style>
-        table {
-            margin-left:auto;
-            margin-right:auto;
-        }
-    </style>
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body align="center">
-    <form method="POST" action="process/login.php">
-        <h2>Form Login Barang Pustik</h2>
-        <p>Silahkan Isi Form</p>
-        <table> 
-            <tr>
-                <td width="40px">Username</td>
-                <td>:
-                    <input type="text" name="nama" placeholder="Masukkan Nama" required>
-                </td>
-                <tr>
-                    <td width="40px">Password</td>
-                    <td>:
-                    <input type="password" name="password" placeholder="Masukkan Password" required>
-                </td>
-                </tr>
-
-            </tr>
-        </table><br>
-
-        <input type="submit" value="Login">
-    </form>
+    <h2>Form Login Barang NOC Pustekinfokom UNHAN RI</h2>
+    <p>Silahkan Isi Form</p>
+    <form class="form" method="post" action="process/login.php">
+  <div class="title">Welcome,<br><span>sign up to continue</span></div>
+  <input type="text" placeholder="Nama" name="nama" class="input" required>
+  <input type="password" placeholder="Password" name="password" class="input" required>
+  <button class="button-confirm">Let`s go →</button>
+</form>
 </body>
 </html>

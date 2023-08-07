@@ -27,7 +27,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 // Retrieve stuff field value
                 $nama_barang = $row["nama_barang"];
                 $jumlah = $row["jumlah"];
-                $satuan = $row["satuan"];
+                $barang = $row["barang"];
                 $tahunan = $row["tahunan"];
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
@@ -80,8 +80,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <p><b><?php echo $row["jumlah"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Satuan</label>
-                        <p><b><?php echo $row["satuan"]; ?></b></p>
+                        <label>Ketersediaan Barang</label>
+                        <p><b><?php echo $row["barang"]; ?></b></p>
                     </div>
                     <div class="form-group">
                         <label>Tahunan</label>

@@ -4,8 +4,8 @@ require_once "../function/config.php";
 require_once "../function/helper.php";
  
 // Define variables and initialize with empty values
-$nama_barang = $jumlah = $satuan = $tahunan = "";
-$nama_err = $jumlah_err = $satuan_err = $tahun_err = "";
+$nama_barang = $jumlah = $barang = $tahunan = "";
+$nama_err = $jumlah_err = $barang_err = $tahun_err = "";
 // Memproses data ketika form sudah dikirim
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Get hidden input value
@@ -29,14 +29,14 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $jumlah = $input_jumlah;
     }
     
-    // Validasi satuan
-    $input_satuan = trim($_POST["satuan"]);
-    if(empty($input_satuan)){
-        $satuan_err = "Mohon masukkan satuan.";     
-    } elseif(!filter_var($input_satuan, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))) {
-        $satuan_err = "Mohon masukkan satuan yang benar.";
+    // Validasi Barang
+    $input_barang = trim($_POST["barang"]);
+    if(empty($input_barang)){
+        $barang_err = "Mohon masukkan Ketersediaan Barang.";     
+    } elseif(!filter_var($input_barang, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))) {
+        $barang_err = "Mohon masukkan barang yang benar.";
     }  else{
-        $satuan = $input_satuan;
+        $barang = $input_barang;
     }
 
     // Validasi tahunan
@@ -50,18 +50,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     }
     
     // Memeriksa inputan error sebelum memasukkannya ke DataBase
-    if(empty($nama_err) && empty($jumlah_err) && empty($satuan_err) && empty($tahun_err)){
+    if(empty($nama_err) && empty($jumlah_err) && empty($barang_err) && empty($tahun_err)){
         // Prepare an update statement
-        $sql = "UPDATE pustik_stuff SET nama_barang=?, jumlah=?, satuan=?, tahunan=? WHERE id=?";
+        $sql = "UPDATE pustik_stuff SET nama_barang=?, jumlah=?, barang=?, tahunan=? WHERE id=?";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sisii", $param_nama, $param_jumlah, $param_satuan, $param_tahun, $param_id);
+            mysqli_stmt_bind_param($stmt, "sisii", $param_nama, $param_jumlah, $param_barang, $param_tahun, $param_id);
             
             // Set parameters
             $param_nama= $nama_barang;
             $param_jumlah = $jumlah;
-            $param_satuan = $satuan;
+            $param_barang = $barang;
             $param_tahun = $tahunan;
             $param_id = $id;
             
@@ -108,7 +108,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     // Retrieve individual field value
                     $nama_barang = $row["nama_barang"];
                     $jumlah = $row["jumlah"];
-                    $satuan = $row["satuan"];
+                    $barang = $row["barang"];
                     $tahunan = $row["tahunan"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
@@ -166,9 +166,9 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <span class="invalid-feedback"><?php echo $jumlah_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Satuan</label>
-                            <input type="text" name="satuan" class="form-control <?php echo (!empty($satuan_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $satuan; ?>">
-                            <span class="invalid-feedback"><?php echo $satuan_err;?></span>
+                            <label for="barang">Ketersediaan Barang</label>
+                            <input type="text" name="barang" class="form-control <?php echo (!empty($barang_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $barang; ?>">
+                            <span class="invalid-feedback"><?php echo $barang_err;?></span>
                         </div>
                         <div class="form-group">
                             <label>Tahunan</label>

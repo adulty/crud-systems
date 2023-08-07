@@ -5,8 +5,8 @@ require_once "../function/helper.php";
 
  
 // Define variables and initialize with empty values
-$nama_barang = $jumlah = $satuan = $tahunan = "";
-$nama_err = $jumlah_err = $satuan_err = $tahun_err = "";
+$nama_barang = $jumlah = $barang = $tahunan = "";
+$nama_err = $jumlah_err = $barang_err = $tahun_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -28,15 +28,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $jumlah = $input_jumlah;
     }
     
-    // Validate Satuan
-    $input_satuan = trim($_POST["satuan"]);
-    if(empty($input_satuan)){
-        $satuan_err = "Mohon masukkan satuan.";     
-    } elseif(!filter_var($input_satuan, FILTER_VALIDATE_REGEXP, array
+    // Validate Barang
+    $input_barang = trim($_POST["barang"]);
+    if(empty($input_barang)){
+        $barang_err = "Mohon masukkan Ketersediaan Barang.";     
+    } elseif(!filter_var($input_barang, FILTER_VALIDATE_REGEXP, array
     ("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $satuan_err = "Mohon masukkan satuan yang benar.";
+        $barang_err = "Mohon masukkan barang yang benar.";
     }  else {
-        $satuan = $input_satuan;
+        $barang = $input_barang;
     }
     
     // Validasi Tahunan
@@ -50,18 +50,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Check input errors before inserting in database
-    if(empty($nama_err) && empty($jumlah_err) && empty($satuan_err) && empty($tahun_err)){
+    if(empty($nama_err) && empty($jumlah_err) && empty($barang_err) && empty($tahun_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO pustik_stuff (nama_barang, jumlah, satuan, tahunan) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO pustik_stuff (nama_barang, jumlah, barang, tahunan) VALUES (?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_nama, $param_jumlah, $param_satuan, $param_tahun);
+            mysqli_stmt_bind_param($stmt, "ssss", $param_nama, $param_jumlah, $param_barang, $param_tahun);
             
             // Set parameters
             $param_nama = $nama_barang;
             $param_jumlah = $jumlah;
-            $param_satuan = $satuan;
+            $param_barang = $barang;
             $param_tahun = $tahunan;
             
             // Attempt to execute the prepared statement
@@ -115,10 +115,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <span class="invalid-feedback"><?php echo $jumlah_err;?></span>
                         </div>
                         <div class="form-group">
-                            <label>Satuan</label>
-                            <input type="text" name="satuan" class="form-control <?php echo (!empty($satuan_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $satuan; ?>">
-                            <span class="invalid-feedback"><?php echo $satuan_err;?></span>
-                        </input>
+                        <label for="barang">Ketersediaan Barang</label>
+                            <input type="text" name="barang" class="form-control <?php echo (!empty($barang_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $barang; ?>">
+                            <span class="invalid-feedback"><?php echo $barang_err;?></span>
+                        </div>
                         <div class="form-group">
                             <label>Tahunan</label>
                             <input type="number" name="tahunan" class="form-control <?php echo (!empty($tahun_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $tahunan; ?>">

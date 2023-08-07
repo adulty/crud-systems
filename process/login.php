@@ -7,7 +7,7 @@ require_once('../function/config.php');
 $username = $_POST['nama'];
 $password = md5($_POST['password']);
 
-$query = mysqli_query($link, "SELECT * FROM login WHERE nama = '$username' AND password = '$password'");
+$query = mysqli_query($link, "SELECT * FROM users WHERE nama = '$username' AND password = '$password'");
 
 // Define variables and initialize with empty value
 $username = $password = "";

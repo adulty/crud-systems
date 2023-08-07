@@ -43,7 +43,7 @@ if ($_SESSION['id'] == null) {
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
-                        <h2 class="pull-left">Daftar Barang Pustik</h2>
+                        <h2 class="pull-left">Daftar Barang NOC Pustik</h2>
                         <a href="page/create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah Barang Baru</a>
                     </div>
                     <?php
@@ -57,7 +57,7 @@ if ($_SESSION['id'] == null) {
                                         echo "<th>#</th>";
                                         echo "<th>Nama Barang</th>";
                                         echo "<th>Jumlah</th>";
-                                        echo "<th>Satuan</th>";
+                                        echo "<th>Ketersediaan Barang</th>";
                                         echo "<th>Tahunan</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
@@ -68,7 +68,7 @@ if ($_SESSION['id'] == null) {
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['nama_barang'] . "</td>";
                                         echo "<td>" . $row['jumlah'] . "</td>";
-                                        echo "<td>" . $row['satuan'] . "</td>";
+                                        echo "<td>" . $row['barang'] . "</td>";
                                         echo "<td>" . $row['tahunan'] . "</td>";
                                         echo "<td>";
                                             echo '<a href="page/read.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
